@@ -1,0 +1,24 @@
+mkdir -p .github/workflows
+
+cat << 'EOF' > .github/workflows/main.yml
+name: SSH Connection
+
+on:
+  workflow_dispatch:
+
+jobs:
+  ssh-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup SSH Connection
+        uses: mxschmitt/action-tmate@v3
+EOF
+
+git add .github/workflows/main.yml
+git commit -m "Fix workflow file format"
+git push
+
+
